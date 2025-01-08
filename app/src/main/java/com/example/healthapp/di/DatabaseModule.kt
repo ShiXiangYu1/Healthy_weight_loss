@@ -1,7 +1,9 @@
+package com.example.healthapp.di
+
 import android.content.Context
 import androidx.room.Room
-import com.example.healthyweightloss.data.database.AppDatabase
-import com.example.healthyweightloss.data.dao.UserDao
+import com.example.healthapp.data.database.AppDatabase
+import com.example.healthapp.data.dao.UserDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -14,16 +16,15 @@ import javax.inject.Singleton
 object DatabaseModule {
     @Provides
     @Singleton
-    fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase {
+    fun provideDatabase(@ApplicationContext context: Context): AppDatabase {
         return Room.databaseBuilder(
             context,
             AppDatabase::class.java,
-            AppDatabase.DATABASE_NAME
+            "health_app_database"
         ).build()
     }
 
     @Provides
-    @Singleton
     fun provideUserDao(database: AppDatabase): UserDao {
         return database.userDao()
     }

@@ -1,4 +1,4 @@
-package com.example.healthyweightloss.data.model
+package com.example.healthapp.data.model
 
 import androidx.room.TypeConverter
 
